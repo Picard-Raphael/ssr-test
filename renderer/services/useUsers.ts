@@ -44,6 +44,6 @@ export const fetchUsersGraphql = async () => {
   return data.users.data;
 };
 
-export const useUsersGraphql = () => {
-  return useQuery('users', async () => fetchUsersGraphql());
+export const useUsersGraphql = (options) => {
+  return useQuery('users', async () => fetchUsersGraphql(), { ...options });
 };

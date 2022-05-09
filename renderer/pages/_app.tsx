@@ -5,16 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from '../store';
 
 export default function MyApp({ Component, pageProps }) {
-  const [queryClient] = React.useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            refetchOnWindowFocus: false,
-          },
-        },
-      })
-  );
+  const [queryClient] = React.useState(() => new QueryClient());
 
   return (
     <QueryClientProvider client={queryClient}>
