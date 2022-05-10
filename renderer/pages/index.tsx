@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Layout from '../components/Layout';
+import MainLayout from '../layouts/main-layout/main-layout';
 import { useAppDispatch, useAppSelector } from '../store';
 import {
   decrement,
@@ -8,12 +8,12 @@ import {
   selectCount,
 } from '../store/counter/counterSlice';
 
-const IndexPage = () => {
+const IndexPage: React.FC = () => {
   const [incrementAmount, setIncrementAmount] = useState<number>(0);
   const dispatch = useAppDispatch();
   const count = useAppSelector(selectCount);
   return (
-    <Layout title='Home | Next.js + TypeScript + Electron Example'>
+    <MainLayout title='Home | Next.js + TypeScript + Electron Example'>
       <h1>Hello Next.js 👋</h1>
       <h2>{count}</h2>
       <button onClick={() => dispatch(increment())}>Increment</button>
@@ -32,13 +32,13 @@ const IndexPage = () => {
           Increment
         </button>
       </div>
-    </Layout>
+    </MainLayout>
   );
 };
 
 export default IndexPage;
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async () => {
   return {
     props: {}, // will be passed to the page component as props
   };

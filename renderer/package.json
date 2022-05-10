@@ -1,0 +1,50 @@
+{
+  "private": true,
+  "main": "main/index.js",
+  "productName": "ElectronTypescriptNext",
+  "scripts": {
+    "clean": "rimraf dist main renderer/out renderer/.next",
+    "dev": "npm run build-electron && electron .",
+    "dev-next": "next dev -p 8123",
+    "build-renderer": "next build renderer && next export renderer",
+    "build-electron": "tsc -p electron-src",
+    "build": "npm run build-renderer && npm run build-electron",
+    "pack-app": "npm run build && electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "type-check": "tsc -p ./renderer/tsconfig.json && tsc -p ./electron-src/tsconfig.json"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
+    "@types/node-fetch": "^2.6.1",
+    "abort-controller": "^3.0.0",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-is-dev": "^1.1.0",
+    "next-i18next": "^11.0.0",
+    "electron-next": "^3.1.5",
+    "graphql": "^16.4.0",
+    "graphql-request": "^4.2.0",
+    "next-redux-wrapper": "^7.0.5",
+    "node-fetch": "^3.2.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-query": "^3.39.0",
+    "react-redux": "^8.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.6",
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.9",
+    "electron": "^13",
+    "electron-builder": "^23.0.3",
+    "next": "latest",
+    "rimraf": "^3.0.0",
+    "typescript": "^4.0.5"
+  },
+  "build": {
+    "asar": true,
+    "files": [
+      "main",
+      "renderer/out"
+    ]
+  }
+}

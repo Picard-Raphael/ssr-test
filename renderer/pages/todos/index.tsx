@@ -1,7 +1,8 @@
-import Layout from '../../components/Layout';
+import MainLayout from '../../layouts/main-layout/main-layout';
 import { dehydrate, QueryClient, useQueryClient } from 'react-query';
-import { fetchTodos, useTodos } from '../../services/useTodos';
-
+import styles from './todo.module.css';
+import { fetchTodos } from '../../api/todos/todos.fetch';
+import { useTodos } from '../../api/todos/useTodos.hooks';
 const TodosPage = () => {
   const { data, isLoading, isFetching } = useTodos();
 
@@ -16,15 +17,15 @@ const TodosPage = () => {
   }
 
   return (
-    <Layout title='Todo Api'>
-      <h1>Todos 💊</h1>
+    <MainLayout title='Todo Api'>
+      <h1 className={styles.todo}>Todos 💊</h1>
       <ul>
         {data.map((todo) => (
           <li key={todo.id}>{todo.title}</li>
         ))}
       </ul>
       <button onClick={invalidate}>INVALIIIIIIIDE</button>
-    </Layout>
+    </MainLayout>
   );
 };
 

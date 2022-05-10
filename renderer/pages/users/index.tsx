@@ -1,7 +1,8 @@
-import Layout from '../../components/Layout';
+import MainLayout from '../../layouts/main-layout/main-layout';
 import { dehydrate, QueryClient, useQueryClient } from 'react-query';
-import { fetchUsersGraphql, useUsersGraphql } from '../../services/useUsers';
 import { useState } from 'react';
+import { useUsersGraphql } from '../../api/users/useUsers.hooks';
+import { fetchUsersGraphql } from '../../api/users/users.fetch';
 
 const PeoplePage = () => {
   const [enabled, toggleEnabled] = useState(false);
@@ -29,7 +30,7 @@ const PeoplePage = () => {
   }
 
   return (
-    <Layout title='Users Api'>
+    <MainLayout title='Users Api'>
       <h1>Users 💊</h1>
       <ul>
         {users.map((users) => (
@@ -39,7 +40,7 @@ const PeoplePage = () => {
       <button onClick={() => setEnabled()}>Go take users !</button>
       <button onClick={() => deleteCache()}>Delete Cache !</button>
       <button onClick={() => invalidateCache()}>Invalide Cache !</button>
-    </Layout>
+    </MainLayout>
   );
 };
 

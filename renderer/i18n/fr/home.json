@@ -1,0 +1,6 @@
+{
+  "home": "Maison",
+  "currency": "Currency: {{val, currency}}",
+  "dateTime": "Datum/tid: {{val, datetime}}",
+  "number": "Numéro: {{val, number}}"
+}
